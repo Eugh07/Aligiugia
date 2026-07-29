@@ -28,7 +28,7 @@ TARGET_SPORT_KEYS = [
 
 def is_monitoring_window():
     now = datetime.utcnow()
-    if now.weekday() not in (4, 5, 6):
+    if now.weekday() != 5:   # solo sabato
         return False
     if not (14 <= now.hour <= 21):
         return False
