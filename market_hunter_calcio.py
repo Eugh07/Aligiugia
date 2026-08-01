@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Market Hunter Calcio – Sabato Edition
+Market Hunter Calcio – Sabato Edition (con salvataggio CSV automatico)
 """
 
-import os, json, logging, requests, sys
+import os, json, csv, logging, requests, sys
 from datetime import datetime, date, timedelta
 
 API_KEY = os.environ["API_KEY"]
@@ -126,7 +126,6 @@ def check_crashes(state, current_matches, now):
                 pass
 
         fid = m["fixture_id"]
-        # Preserviamo i flag precedenti se la partita esiste già nello stato
         prev = state.get(fid, {})
         new_state[fid] = {
             "home": m["home"],
@@ -156,7 +155,6 @@ def check_crashes(state, current_matches, now):
         if old_home > MIN_STARTING_ODD and m["odd_home"] < MAX_CRASH_ODD:
             drop = (old_home - m["odd_home"]) / old_home
             if drop >= FULL_CRASH_THRESHOLD_PERCENT / 100.0:
-                # Crash definitivo
                 if m["odd_home"] >= QUOTA_MINIMA_DOPO_CRASH:
                     alerts.append({
                         "fixture_id": fid,
@@ -173,7 +171,6 @@ def check_crashes(state, current_matches, now):
                         "odd_draw": m.get("odd_draw")
                     })
             elif drop >= PRE_CRASH_THRESHOLD_PERCENT / 100.0:
-                # Pre‑alert
                 if not prev.get("pre_alert_sent"):
                     alerts.append({
                         "fixture_id": fid,
@@ -248,6 +245,35 @@ def save_bet(bets, alert):
     })
     return bets
 
+def log_bet_to_csv(alert, filename="bets_log.csv"):
+    """Salva una riga nel file CSV per ogni alert."""
+    file_exists = os.path.isfile(filename)
+    with open(filename, "a", newline="") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow([
+                "fixture_id", "Data", "Ora", "Tipo", "Campionato",
+                "Squadra casa", "Squadra ospite", "Pronostico",
+                "Quota prima", "Quota dopo", "Calo %",
+                "Quota pareggio", "Risultato reale", "Esito"
+            ])
+        writer.writerow([
+            alert.get("fixture_id", ""),
+            datetime.now().strftime("%Y-%m-%d"),
+            alert["time"],
+            alert["alert_type"],
+            alert["league"],
+            alert["home"],
+            alert["away"],
+            alert["predicted"],
+            f'{alert["old_odd"]:.2f}',
+            f'{alert["new_odd"]:.2f}',
+            alert["drop"],
+            alert.get("odd_draw", "N/D"),
+            "",   # risultato reale
+            ""    # esito
+        ])
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
@@ -289,6 +315,7 @@ if __name__ == "__main__":
             )
         send_telegram(message)
         bets = save_bet(bets, alert)
+        log_bet_to_csv(alert)          # <-- salva nel CSV
 
     save_json("state.json", new_state)
     save_json("bets.json", bets)
