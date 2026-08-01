@@ -155,7 +155,25 @@ def check_crashes(state, current_matches, now):
         # Lato Home
         if old_home > MIN_STARTING_ODD and m["odd_home"] < MAX_CRASH_ODD:
             drop = (old_home - m["odd_home"]) / old_home
-            if drop >= PRE_CRASH_THRESHOLD_PERCENT / 100.0:
+            if drop >= FULL_CRASH_THRESHOLD_PERCENT / 100.0:
+                # Crash definitivo
+                if m["odd_home"] >= QUOTA_MINIMA_DOPO_CRASH:
+                    alerts.append({
+                        "fixture_id": fid,
+                        "home": m["home"],
+                        "away": m["away"],
+                        "league": m["league"],
+                        "side": "Home",
+                        "old_odd": old_home,
+                        "new_odd": m["odd_home"],
+                        "drop": round(drop * 100, 2),
+                        "predicted": m["home"],
+                        "time": now.strftime("%H:%M:%S"),
+                        "alert_type": "definitive",
+                        "odd_draw": m.get("odd_draw")
+                    })
+            elif drop >= PRE_CRASH_THRESHOLD_PERCENT / 100.0:
+                # Pre‑alert
                 if not prev.get("pre_alert_sent"):
                     alerts.append({
                         "fixture_id": fid,
@@ -172,23 +190,6 @@ def check_crashes(state, current_matches, now):
                         "odd_draw": m.get("odd_draw")
                     })
                     new_state[fid]["pre_alert_sent"] = True
-                if drop >= FULL_CRASH_THRESHOLD_PERCENT / 100.0 and prev.get("pre_alert_sent") and not prev.get("alert_sent"):
-                    if m["odd_home"] >= QUOTA_MINIMA_DOPO_CRASH:
-                        alerts.append({
-                            "fixture_id": fid,
-                            "home": m["home"],
-                            "away": m["away"],
-                            "league": m["league"],
-                            "side": "Home",
-                            "old_odd": old_home,
-                            "new_odd": m["odd_home"],
-                            "drop": round(drop * 100, 2),
-                            "predicted": m["home"],
-                            "time": now.strftime("%H:%M:%S"),
-                            "alert_type": "definitive",
-                            "odd_draw": m.get("odd_draw")
-                        })
-                        new_state[fid]["alert_sent"] = True
 
         # Lato Away
         if old_away > MIN_STARTING_ODD and m["odd_away"] < MAX_CRASH_ODD:
