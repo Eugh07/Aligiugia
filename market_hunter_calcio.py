@@ -32,7 +32,7 @@ def is_monitoring_window():
     now = datetime.utcnow()
     if now.weekday() != 5:   # sabato
         return False
-    if not (14 <= now.hour <= 22):
+    if not (14 <= now.hour < 22):
         return False
     return True
 
