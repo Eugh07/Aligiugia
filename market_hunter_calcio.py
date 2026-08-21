@@ -71,9 +71,6 @@ def fetch_odds():
             logging.error(f"HTTP {resp.status_code}: {resp.text}")
             return []
         data = resp.json()
-               # DEBUG: stampa tutte le sport_key ricevute
-        all_keys = set(g.get("sport_key") for g in data)
-        logging.info(f"DEBUG: sport_key disponibili oggi: {sorted(all_keys)}")
         matches = []
         for game in data:
             sport_key = game.get("sport_key")
