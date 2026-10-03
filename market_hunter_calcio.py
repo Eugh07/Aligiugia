@@ -319,8 +319,6 @@ if __name__ == "__main__":
 
     logging.info("Market Hunter Calcio (Venerdì) started")
     
-    send_telegram("✅ Test di verifica: il bot funziona")
-    
     state = load_json("state.json")
     bets = load_json("bets.json", [])
 
