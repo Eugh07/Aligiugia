@@ -1,17 +1,4 @@
 {
-  "d5b0e0c0934f6a58410410bd573a5065": {
-    "home": "Real Sociedad B",
-    "away": "Sporting Gij\u00f3n",
-    "league": "La Liga 2 - Spain - soccer_spain_segunda_division",
-    "odd_home": 8.0,
-    "odd_away": 19.0,
-    "commence_time": "2026-11-14T15:15:00Z",
-    "timestamp": "2026-11-14T17:15:47.313530+00:00",
-    "pre_alert_sent": false,
-    "alert_sent": false,
-    "last_side": null,
-    "last_alert_time": null
-  },
   "570ec7734e1f7d9e813ab0013291f5f5": {
     "home": "Almer\u00eda",
     "away": "Andorra CF",
@@ -19,7 +6,7 @@
     "odd_home": 1.73,
     "odd_away": 4.4,
     "commence_time": "2026-11-14T17:30:00Z",
-    "timestamp": "2026-11-14T17:15:47.313530+00:00",
+    "timestamp": "2026-11-14T17:20:45.610739+00:00",
     "pre_alert_sent": false,
     "alert_sent": false,
     "last_side": null,
@@ -32,7 +19,7 @@
     "odd_home": 1.82,
     "odd_away": 3.85,
     "commence_time": "2026-11-14T17:30:00Z",
-    "timestamp": "2026-11-14T17:15:47.313530+00:00",
+    "timestamp": "2026-11-14T17:20:45.610739+00:00",
     "pre_alert_sent": false,
     "alert_sent": false,
     "last_side": null,
