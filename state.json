@@ -1,25 +1,12 @@
 {
-  "908247d5d5cd714de37956edf865668b": {
-    "home": "Real Valladolid CF",
-    "away": "CD Castell\u00f3n",
-    "league": "La Liga 2 - Spain - soccer_spain_segunda_division",
-    "odd_home": 100.0,
-    "odd_away": 1.01,
-    "commence_time": "2026-11-14T13:04:00Z",
-    "timestamp": "2026-11-14T15:10:44.405880+00:00",
-    "pre_alert_sent": false,
-    "alert_sent": false,
-    "last_side": null,
-    "last_alert_time": null
-  },
   "d5b0e0c0934f6a58410410bd573a5065": {
     "home": "Real Sociedad B",
     "away": "Sporting Gij\u00f3n",
     "league": "La Liga 2 - Spain - soccer_spain_segunda_division",
     "odd_home": 2.12,
     "odd_away": 2.95,
-    "commence_time": "2026-11-14T15:15:00Z",
-    "timestamp": "2026-11-14T15:10:44.405880+00:00",
+    "commence_time": "2026-11-14T15:17:00Z",
+    "timestamp": "2026-11-14T15:15:44.339395+00:00",
     "pre_alert_sent": false,
     "alert_sent": false,
     "last_side": null,
