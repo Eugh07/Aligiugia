@@ -1,25 +1,12 @@
 {
-  "e3b471ce6669eeb025235678fd3e6a0d": {
-    "home": "IFK Norrkoping",
-    "away": "\u00d6stersunds FK",
-    "league": "Superettan - Sweden - soccer_sweden_superettan",
-    "odd_home": 2.25,
-    "odd_away": 3.01,
-    "commence_time": "2026-10-31T12:00:00Z",
-    "timestamp": "2026-10-31T12:01:05.887763",
-    "pre_alert_sent": false,
-    "alert_sent": false,
-    "last_side": null,
-    "last_alert_time": null
-  },
-  "fde3790b1f7bc694043acd05fc1c65f6": {
-    "home": "Rubin Kazan",
-    "away": "FC Fakel Voronezh",
-    "league": "Premier League - Russia - soccer_russia_premier_league",
-    "odd_home": 1.97,
-    "odd_away": 4.55,
-    "commence_time": "2026-10-31T12:15:00Z",
-    "timestamp": "2026-10-31T12:01:05.887763",
+  "908247d5d5cd714de37956edf865668b": {
+    "home": "Real Valladolid CF",
+    "away": "CD Castell\u00f3n",
+    "league": "La Liga 2 - Spain - soccer_spain_segunda_division",
+    "odd_home": 2.7,
+    "odd_away": 2.12,
+    "commence_time": "2026-11-14T13:00:00Z",
+    "timestamp": "2026-11-14T12:01:06.328030+00:00",
     "pre_alert_sent": false,
     "alert_sent": false,
     "last_side": null,
